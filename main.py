@@ -64,8 +64,11 @@ class matrx:
             #print("---")
             #print(d)
             #d = d.reshape((1, 3))
-            #print(d)
-            print( np.allclose(d, self.minimizer) )
+
+            print()
+            print( " d: " ,d)
+            print()
+            #print( np.allclose(d, self.minimizer) )
 
     def generate_some_minimizer_vicinity(self, M, a, b):
 
@@ -144,8 +147,9 @@ class matrx:
         a_step = (-2) * (a_step_a / a_step_b)   # 0< at < -2 [grad Fx]^T dt/ dT Hxt dt
 
 
-        #[a_t * [gradient F(x_t)] ^ T * dt]
+        #[a_t * [gradient F(x_t)] ^ T * dt] - < 0
         at_MULT_gradient_Ft_Transp_dt = np.matmul(a_step, gradient_Ft_Transp_dt) # ---> [[ a_t ]] * [[ [ gradient F(x_t)  ]^T * dt ]]
+        print("ss :" , at_MULT_gradient_Ft_Transp_dt)
 
         #[(1 / 2) *  [ [ [ [a_t ^ 2] * d_t ^ T] * Hessian(x_t)]  * d_t] ]
         a_t_step_square = pow(a_step, 2)
